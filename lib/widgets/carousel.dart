@@ -12,9 +12,8 @@ class Carousel extends StatefulWidget {
 }
 
 class _CarouselState extends State<Carousel> {
-  
   int _current = 0;
-  List imgList=[
+  List imgList = [
     'assets/images/mathbg.png',
     'assets/images/englishbg.jpg',
     'assets/images/sciencebg.jpg',
@@ -47,9 +46,9 @@ class _CarouselState extends State<Carousel> {
                 _current = index;
               });
             },
-            items: imgList.map((imgUrl){
+            items: imgList.map((imgUrl) {
               return Builder(
-                builder: (BuildContext context){
+                builder: (BuildContext context) {
                   return Stack(
                     children: [
                       Card(),
@@ -58,6 +57,7 @@ class _CarouselState extends State<Carousel> {
                         margin: EdgeInsets.symmetric(horizontal: 10),
                         decoration: BoxDecoration(
                           color: Colors.green,
+                          borderRadius: BorderRadius.circular(10),
                         ),
                         child: Image.asset(
                           imgUrl,
@@ -70,7 +70,9 @@ class _CarouselState extends State<Carousel> {
               );
             }).toList(),
           ),
-          SizedBox(height: 20,),
+          SizedBox(
+            height: 20,
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: map<Widget>(imgList, (index, url) {
@@ -80,7 +82,7 @@ class _CarouselState extends State<Carousel> {
                 margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: _current == index ? Colors.redAccent : Colors.green,
+                  color: _current == index ? Colors.blue : Colors.redAccent,
                 ),
               );
             }),
