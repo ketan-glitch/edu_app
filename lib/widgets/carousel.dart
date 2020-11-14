@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -35,9 +36,9 @@ class _CarouselState extends State<Carousel> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           CarouselSlider(
-            height: 200,
+            height: 256,
             initialPage: 0,
-            enlargeCenterPage: true,
+            // enlargeCenterPage: true,
             reverse: false,
             // autoPlay: true,
             enableInfiniteScroll: false,
@@ -51,19 +52,62 @@ class _CarouselState extends State<Carousel> {
                 builder: (BuildContext context) {
                   return Stack(
                     children: [
-                      Card(),
-                      Container(
-                        width: MediaQuery.of(context).size.width,
-                        margin: EdgeInsets.symmetric(horizontal: 10),
-                        decoration: BoxDecoration(
-                          color: Colors.green,
-                          borderRadius: BorderRadius.circular(10),
+                      Card(
+                        color: Colors.green,
+                        elevation: 0,
+                        shape: RoundedRectangleBorder(
+                            side: BorderSide(
+                              color: Colors.white70,
+                              width: 1,
+                            ),
+                            borderRadius: BorderRadius.circular(10)
                         ),
-                        child: Image.asset(
-                          imgUrl,
-                          fit: BoxFit.fill,
+                        child: Container(
+                          width: MediaQuery.of(context).size.width,
+                          // margin: EdgeInsets.symmetric(horizontal: 10),
+                          decoration: BoxDecoration(
+                            color: Colors.green,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          // child: Image.asset(
+                          //   imgUrl,
+                          //   fit: BoxFit.fill,
+                          // ),
+                          child: Image(
+                            fit: BoxFit.fill,
+                            image: AssetImage(imgUrl),
+                          ),
                         ),
-                      )
+                      ),
+                      Positioned(
+                        left: 100,
+                        bottom: 0,
+                        child: Card(
+                          elevation: 0,
+                          shape: RoundedRectangleBorder(
+                            side: BorderSide(
+                              color: Colors.white70,
+                              width: 1,
+                            ),
+                            borderRadius: BorderRadius.only(topRight: Radius.circular(10), topLeft: Radius.circular(10))
+                          ),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20)
+                            ),
+                            height: 50,
+                            width: 121,
+                            child: Center(
+                              child: Text(
+                                'Maths',
+                                style: TextStyle(
+                                  fontSize: 40
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
                     ],
                   );
                 },
